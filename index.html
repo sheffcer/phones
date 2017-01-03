@@ -1,0 +1,70 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="/style/style.css">
+  <script
+  src="https://code.jquery.com/jquery-2.2.4.min.js"
+  integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+  crossorigin="anonymous"></script>
+</head>
+<body>
+  <h3>CSS Animated Hamburger Icon</h3>
+  <a id="nav-toggle" href="#"><span></span></a>
+  <button onclick="loadPhones()">Загрузить phones.json!</button>
+  <button onclick="xhr()">Fuck'n XHR</button>
+  
+
+  <script>
+    function loadPhones() {
+      var xhr = new XMLHttpRequest();
+
+      xhr.open('GET', 'phones.json', false);
+      xhr.send();
+
+      if (xhr.status != 200) {
+        // обработать ошибку
+        alert('Ошибка ' + xhr.status + ': ' + xhr.statusText);
+      } else {
+        // вывести результат
+        alert(xhr.responseText);
+      }
+    }
+  </script>
+  <script>
+  function xhr(){
+    var xhr = new XMLHttpRequest();
+    var currentTime = (new Date()).getTime();
+    
+    xhr.open("get", "hello.txt");
+  
+    xhr.addEventListener("readystatechange", function() {
+      if (xhr.readyState == 4) {
+        console.log(xhr.responseText);
+//        alert(xhr.responseText);
+      }
+    });
+  
+    xhr.send();
+  }
+  </script>
+  <script>
+    $( "#nav-toggle" ).on( "click", function() {
+      $( this ).toggleClass( "active" );
+      console.log('test');
+    });
+  </script>
+<!--  <script src="icon.js"></script>-->
+<!--
+  <script>
+    document.querySelector('#nav-toggle').addEventListener('click', function({
+      this.classList.toggle('active');
+      console.log('test');
+    });
+  </script>
+-->
+
+</body>
+
+</html>
