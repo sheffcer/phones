@@ -11,7 +11,7 @@
 </head>
 <body>
   <h3>CSS Animated Hamburger Icon</h3>
-  <a id="nav-toggle" href="#"><span></span></a>
+  <a class="nav-toggle" href="#"><span></span></a>
   <button onclick="loadPhones()">Загрузить phones.json!</button>
   <button onclick="xhr()">Fuck'n XHR</button>
   
@@ -49,21 +49,28 @@
     xhr.send();
   }
   </script>
+<!--
   <script>
     $( "#nav-toggle" ).on( "click", function() {
       $( this ).toggleClass( "active" );
       console.log('test');
     });
   </script>
-<!--  <script src="icon.js"></script>-->
-<!--
-  <script>
-    document.querySelector('#nav-toggle').addEventListener('click', function({
-      this.classList.toggle('active');
-      console.log('test');
-    });
-  </script>
 -->
+<!--  <script src="icon.js"></script>-->
+  <script>
+  (function() {
+    document.querySelector(".nav-toggle").addEventListener("click", function(){
+      this.classList.toggle("active");
+      console.log("test");
+      });
+  })();                                                                      
+  </script>
+
+<script>
+  var f = document.querySelector(".nav-toggle");
+  console.log(f.classList);
+</script>
 
 </body>
 
