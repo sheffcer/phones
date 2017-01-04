@@ -1,0 +1,120 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Dropdown</title>
+    <style type="text/css">
+	.cust-dropdown{
+		width:300px;
+		height:30px;
+		position:relative;
+		background:#D1D1D1;
+		border:1px solid #AAA;
+		border-radius:7px;
+		padding-left:10px;
+		cursor:pointer;
+	}
+	.cust-dropdown:before {
+    content: "";
+    position: absolute;
+    right: 13px;
+    padding: 12px;
+    border-left: 1px solid #AAA;
+    top: 4px;
+}
+	.cust-dropdown:after {
+    clear: both;
+    display: block;
+    position: absolute;
+    content: "";
+    height: 0;
+    width: 0;
+    right: 10px;
+    /* margin: -5px; */
+    border: 8px solid transparent;
+    border-top-color: #262525;
+    top: 13px;
+}
+	.drop-down-lst-hide{
+		list-style:none;
+		width: 311px;
+		background:#D1D1D1;
+		position:relative;
+		padding-left: 0px;
+		top: -16px;
+		display:none;
+		border: 1px solid AAA;
+		border-radius: 7px;
+		overflow:auto;
+	}
+	.drop-down-lst-show{
+		list-style:none;
+		width: 311px;
+		background:#D1D1D1;
+		position:relative;
+		padding-left: 0px;
+		top: -16px;
+		display:block;
+	}
+	.drop-down-lst-hide li:first-child{
+		border-top-left-radius:7px;
+		border-top-right-radius:7px;
+	}
+	.drop-down-lst-hide li:last-child{
+		border-bottom-left-radius:7px;
+		border-bottom-right-radius:7px;
+	}
+	.drop-down-lst-hide li{
+		padding: 6px;
+		border-top:1px solid #FAFAFA;;
+	}
+	.drop-down-lst-hide li:hover{
+		background:#CFC5C5;;
+		cursor:pointer;
+	}
+	p.cust-dropdown-span{
+	margin: 6px 46px 6px 5px;
+	}
+    </style>
+  </head>
+  <body>
+  <div class="cust-drop-container">
+  <div class="cust-dropdown"><p class="cust-dropdown-span" data-val="">Select</p></div>
+    <ul class="drop-down-lst-hide"><li>1</li><li>2</li><li>3</li><li>4</li><li>5</li><li>6</li><li>7</li><li>8</li><li>9</li><li>10</li></ul>
+  </div>
+  
+	<script type="text/javascript">
+		function myFun(e){
+			document.querySelector('.cust-dropdown-span').innerHTML = this.innerHTML;
+			document.querySelector('.cust-dropdown-span')['data-val'] = this.innerHTML;
+			document.querySelector(':not([class="cust-drop-container"])').click();
+			e.stopPropagation();
+		}
+		for(var j in document.getElementsByTagName('li')){
+			document.getElementsByTagName('li')[j].onclick = myFun;
+		}
+		document.querySelector('.cust-dropdown').addEventListener("click", function(e){
+			var a=0;
+			function anim(){
+				a+=2;
+				if(a!=170){
+					document.querySelector('.drop-down-lst-hide').style.display="block";
+					document.querySelector('.drop-down-lst-hide').style.height = a+'px';
+					document.querySelector('.drop-down-lst-hide').classList.toggle('drop-down-lst-show');
+					setTimeout(anim, 1)
+				}
+				else{
+					document.querySelector('.drop-down-lst-hide').classList.toggle('drop-down-lst-show');
+				}
+			}
+			anim();
+			e.stopPropagation();
+		});
+		document.querySelector(':not([class="cust-drop-container"])').addEventListener("click", function(e){
+			document.querySelector('.drop-down-lst-hide').classList.remove('drop-down-lst-show');
+			document.querySelector('.drop-down-lst-hide').style.display="none";
+			e.stopPropagation();
+		});
+    </script>
+  </body>
+</html>
