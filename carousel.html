@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Javascript Carousel</title>
+    <style type="text/css">
+		ul li{
+			list-style: none;
+			border: 1px solid gray;
+			margin: 2px;
+			text-align: center;
+			width:120px;
+			height:80px;
+      
+    }
+		.active{
+			border:1px solid red;
+		}
+		.carousel{
+			display: inline-flex;
+			position:relative;
+			padding:0;
+		}
+		
+	</style>
+  </head>
+  <body>
+  <section style="position:relative;overflow:hidden;margin:0 auto;width:250px;" class="carousle-container">
+	<ul class="carousel">
+		<li>1</li>
+		<li>2</li>
+		<li>3</li>
+		<li>4</li>
+		<li>5</li>
+		<li>6</li>
+		<li>7</li>
+		<li>8</li>
+		<li>9</li>
+		<li>10</li>
+	</ul>
+	<section style="width:90px;margin:0 auto">
+		<input type="button" value="Right" id="right" disabled />
+		<input type="button" value="Left" id="left" />
+	</section>
+  </section>
+<script type="text/javascript">
+(function() {
+    this.Carousel = function() {
+        this.i = 0;
+        var defaults = {
+            display: 5
+        }
+        if (arguments[0] && typeof arguments[0] === "object") {
+            this.options = extendDefaults(defaults, arguments[0]);
+        }
+        this.init();
+    }
+    Carousel.prototype.prevNext = function(f) {
+        var b = 1,
+            c, t, d, lf, a;
+        if (f == -1) {
+            this.i = this.i + 1;
+        } else {
+            this.i = this.i - 1;
+            b = -b;
+        }
+        c = document.querySelectorAll('li').length, lf = this.li * f * this.i * b,
+            t = this.li * c, d = Math.abs(lf - (this.li * this.options.display));
+        if (t == d) {
+            document.getElementById('right').removeAttribute('disabled');
+            document.getElementById('left').setAttribute('disabled', true);
+        } else if (~~lf == 0) {
+            document.getElementById('left').removeAttribute('disabled');
+            document.getElementById('right').setAttribute('disabled', true);
+        } else {
+            document.getElementById('right').removeAttribute('disabled');
+        }
+        a = lf + this.li;
+        if (f == 1) {
+            a = lf - this.li;
+        }
+        function anim() {
+            if (lf != a) {
+                document.querySelector('ul').removeAttribute('style');
+                if (f == -1) {
+                    --a;
+                    document.querySelector('ul').style.left = a - 1 + 'px';
+                } else if (f == 1) {
+                    ++a;
+                    document.querySelector('ul').style.left = a + 'px';
+                }
+                setTimeout(anim, 1);
+            }
+        }
+        anim();
+    }
+    Carousel.prototype.init = function() {
+        var li = document.querySelector('li'),
+            style = li.currentStyle || window.getComputedStyle(li),
+            singleLi = +style.marginLeft.replace('px', '') * 2 + li.offsetWidth;
+        document.querySelector('.carousle-container').style.width = singleLi * this.options.display + 'px';
+        this.li = singleLi;
+        initializeEvents.call(this);
+    }
+    function extendDefaults(source, properties) {
+        var property;
+        for (property in properties) {
+            if (properties.hasOwnProperty(property)) {
+                source[property] = properties[property];
+            }
+        }
+        return source;
+    }
+    function initializeEvents() {
+        document.getElementById('right').addEventListener('click', this.prevNext.bind(this, 1));
+        document.getElementById('left').addEventListener('click', this.prevNext.bind(this, -1));
+    }
+}());
+var carousel = new Carousel({
+    display: 3
+});
+</script>
+  </body>
+</html>
