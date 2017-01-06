@@ -4,17 +4,15 @@
 <head>
   <meta charset="utf-8">
   <link rel="stylesheet" href="/style/style.css">
-  <script
-  src="https://code.jquery.com/jquery-2.2.4.min.js"
-  integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
-  crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
 </head>
+
 <body>
   <h3>CSS Animated Hamburger Icon</h3>
   <a class="nav-toggle" href="#"><span></span></a>
   <button onclick="loadPhones()">Загрузить phones.json!</button>
   <button onclick="xhr()">Fuck'n XHR</button>
-  
+
 
   <script>
     function loadPhones() {
@@ -33,23 +31,23 @@
     }
   </script>
   <script>
-  function xhr(){
-    var xhr = new XMLHttpRequest();
-    var currentTime = (new Date()).getTime();
-    
-    xhr.open("get", "hello.txt");
-  
-    xhr.addEventListener("readystatechange", function() {
-      if (xhr.readyState == 4) {
-        console.log(xhr.responseText);
-//        alert(xhr.responseText);
-      }
-    });
-  
-    xhr.send();
-  }
+    function xhr() {
+      var xhr = new XMLHttpRequest();
+      var currentTime = (new Date()).getTime();
+
+      xhr.open("get", "hello.txt");
+
+      xhr.addEventListener("readystatechange", function() {
+        if (xhr.readyState == 4) {
+          console.log(xhr.responseText);
+          //        alert(xhr.responseText);
+        }
+      });
+
+      xhr.send();
+    }
   </script>
-<!--
+  <!--
   <script>
     $( "#nav-toggle" ).on( "click", function() {
       $( this ).toggleClass( "active" );
@@ -57,20 +55,20 @@
     });
   </script>
 -->
-<!--  <script src="icon.js"></script>-->
+  <!--  <script src="icon.js"></script>-->
   <script>
-  (function() {
-    document.querySelector(".nav-toggle").addEventListener("click", function(){
-      this.classList.toggle("active");
-      console.log("test");
+    (function() {
+      document.querySelector(".nav-toggle").addEventListener("click", function() {
+        this.classList.toggle("active");
+        console.log("test");
       });
-  })();                                                                      
+    })();
   </script>
 
-<script>
-  var f = document.querySelector(".nav-toggle");
-  console.log(f.classList);
-</script>
+  <script>
+    var f = document.querySelector(".nav-toggle");
+    console.log(f.classList);
+  </script>
 
 </body>
 
