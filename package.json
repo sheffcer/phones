@@ -1,0 +1,23 @@
+{
+  "name": "phones",
+  "version": "1.0.0",
+  "description": "",
+  "main": "icon.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sheffcer/phones.git"
+  },
+  "author": "sheffcer",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sheffcer/phones/issues"
+  },
+  "homepage": "https://github.com/sheffcer/phones#readme",
+  "dependencies": {
+    "offside-js": "^1.3.1"
+  }
+}
