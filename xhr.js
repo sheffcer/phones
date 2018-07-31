@@ -1,3 +1,5 @@
+'use strict';
+
 (function() { 
   var xhr = new XMLHttpRequest();
   xhr.open("get", "hello.txt");

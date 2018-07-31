@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Grid</title>
+</head>
+<style>
+  .container {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-gap: 10px;
+}
+.header {
+  grid-column: span 12;
+  outline: 1px dotted blue;
+  background-color: aquamarine;
+  min-height: 50px;
+}
+.navigation-menu {
+  grid-column: span 4;
+  outline: 1px dotted green;
+  background-color: greenyellow;
+  min-height: 50px;
+}
+.main-content {
+  grid-column: span 8;
+  outline: 1px dotted pink;
+  min-height: 50px;
+  background-color: lightpink;
+}
+.footer {
+  grid-column: span 12;
+  outline: 1px dotted black;
+  background-color: burlywood;
+  min-height: 50px;
+}
+@media screen and (max-width: 768px) {
+  .navigation-menu {
+    grid-column: span 6;
+  }
+  .main-content {
+    grid-column: span 6;
+  }
+}
+@media screen and (max-width: 480px) {
+  .navigation-menu {
+    grid-row: 1;
+    grid-column: span 12;
+  }
+  .main-content {
+    grid-column: span 12;
+  }
+}
+</style>
+<body>
+  <body>
+  <div class="container">
+    <div class="header">PageHeader</div>
+    <div class="navigation-menu">MainMenu</div>
+    <div class="main-content">Content</div>
+    <div class="footer">PageFooter</div>
+  </div>
+</body>
+</body>
+</html>
